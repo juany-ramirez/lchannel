@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +15,17 @@ export class HomeComponent implements OnInit {
   videos=[];
   channelName:string=''
 
-  constructor() { }
+  posts : any;
+  readonly ROOT_URL='https://jsonplaceholder.typicode.com/posts'
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {}
+
+  //deberia de retornar un observable del response del api
+  getPosts() {
+    this.posts = this.http.get(this.ROOT_URL)
+  }
     
 }
 

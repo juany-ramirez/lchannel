@@ -1,14 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
+
 .home{
     background: #DCE4E5;
     background-size: auto;
+    font-family: 'Raleway', 'Arial';
 }
 
 div .search{
     vertical-align: middle;
 }
 
+#videoTtl{
+    color: #EBF0F2;
+}
+
 #searchBtn{
     color: #EBF0F2 !important;
+}
+
+#arrowBtn{
+    height: 100px;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.dark-nav {
+    background: #243645;
+    color: #768591;
 }
 
 .color-dark {
@@ -27,4 +45,5 @@ div .search{
 nav{
     background-color: #243645;
     color: #768591;
+    height: 57px;
 }
