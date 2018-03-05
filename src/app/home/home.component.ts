@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Channel } from './Channel';
+import { Observable } from 'rxjs/Observable';
+import { ConfigServicService } from '../config-servic.service';
 
 @Component({
   selector: 'app-home',
@@ -7,54 +9,43 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  video={
+
+  item={
     name:'',
     description:'',
     date:'',
   };
-  videos=[];
-  channelName:string=''
 
-  posts : any;
-  readonly ROOT_URL='https://jsonplaceholder.typicode.com/posts'
+  items=[]
 
-  constructor(private http: HttpClient) { }
-
-  ngOnInit() {}
-
-  //deberia de retornar un observable del response del api
-  getPosts() {
-    this.posts = this.http.get(this.ROOT_URL)
+  channel={
+    kind: '',
+    etag: '',
+    nextPageToken: '',
+    prevPageToken: '',
+    pageInfo: {
+      totalResults: 0,
+      resultsPerPage: 0
+    },
+    items: [{}],
   }
-    
+  
+  posts : any;
+
+
+  constructor(private _data: ConfigServicService) { }
+
+  ngOnInit() {
+    // this._data.getPosts()
+    // .subscribe(data=>this.channel={
+    //   kind: data['kind'],
+    //   etag: data['etag'],
+    //   nextPageToken: data['nextPageToken'],
+    //   prevPageToken: data['prevPageToken'],
+    //   pageInfo: data['pageInfo'],
+    //   items: data['items']
+    // });
+    this.posts = this._data.getPosts()
+  }
+
 }
-
-// $.get(
-//   "https://www.googleapis.com/youtube/v3/channels",{
-//     part:'contentDetails',
-//     forUsername:channelName,
-//     key: 'AIzaSyCcdzClrKE6FrsDce4FrnXroYcHohB1zMc',
-//     function (data) {
-//       $.each(data.items, function(i,item){
-//         console.log(item);
-//         getVids();
-//       })
-//     }
-//   }
-// );
-
-// getVids(pid){
-//   $.get(
-//     "https://www.googleapis.com/youtube/v3/channels",{
-//       part:'contentDetails',
-//       forUsername:channelName,
-//       key: 'AIzaSyCcdzClrKE6FrsDce4FrnXroYcHohB1zMc',
-//       function (data) {
-//         $.each(data.items, function(i,item){
-//           console.log(item);
-//           getVids();
-//         })
-//       }
-//     }
-//   );
-// }

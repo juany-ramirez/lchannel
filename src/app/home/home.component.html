@@ -15,14 +15,17 @@
           </div>
         </nav>
       </div>
-      <div class="col s3">
+      <div (click)="getPosts()" class="col s3">
           <a class="waves-effect waves-light btn-large yellow darken-4"><i class="material-icons left">search</i>Buscar</a>
       </div>
     </div>
     <!-- ******************************** -->
-    <!-- <div class="col s6 color-light">
-      <p class="sm">Use this form below to add a new bucket list goal. What do you want to do with your life?</p>
+    <!-- <div class="col s12 color-light">
+      <p class="sm">{{posts | json}}</p>
     </div> -->
+    <!-- <div *ngFor="let post of posts | async" class="col s12 color-light">
+        <p class="sm">{{post | json}}</p>
+      </div> -->
     <!-- ******************************** -->
     <div class="row dark-nav" id="">
       <div class="col s2 offset-s2 valign-wrapper" id="arrowBtn">
@@ -41,7 +44,7 @@
         <h5 id="videoTtl"><i class="material-icons yellow darken-4 text">videocam</i><span>Nombre del Video</span> </h5>
       </div>
       <div class="col s6 color-light">
-        <p class="sm">Use this form below to add a new bucket list goal. What do you want to do with your life?</p>
+        <p class="sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean imperdiet tellus id tincidunt ultricies. Nunc bibendum, libero ut facilisis tincidunt, justo nisi consectetur purus, sit amet aliquam ipsum arcu in eros. </p>
       </div>
       <div class="col s6 color-light">
         <p class="detail-info">
@@ -57,7 +60,7 @@
           <h5 id="videoTtl"><i class="material-icons yellow darken-4 text">videocam</i><span>Nombre del Video</span> </h5>
       </div>
       <div class="col s6 color-light">
-        <p class="sm">Use this form below to add a new bucket list goal. What do you want to do with your life?</p>
+        <p class="sm">Nunc rutrum bibendum odio, vel lobortis urna pulvinar sit amet. Suspendisse potenti. Maecenas id fringilla leo. Ut eget risus sit amet eros varius efficitur accumsan at diam.</p>
       </div>
       <div class="col s6 color-light">
         <p class="detail-info">
