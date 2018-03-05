@@ -19,55 +19,34 @@
           <a class="waves-effect waves-light btn-large yellow darken-4"><i class="material-icons left">search</i>Buscar</a>
       </div>
     </div>
-    <!-- ******************************** -->
-    <!-- <div class="col s12 color-light">
-      <p class="sm">{{posts | json}}</p>
-    </div> -->
-    <!-- <div *ngFor="let post of posts | async" class="col s12 color-light">
-        <p class="sm">{{post | json}}</p>
-      </div> -->
-    <!-- ******************************** -->
-    <div class="row dark-nav" id="">
+    <div class="row dark-nav">
       <div class="col s2 offset-s2 valign-wrapper" id="arrowBtn">
         <a class="btn-floating btn waves-effect waves-light  orange darken-3"><i class="material-icons">arrow_back</i></a>
       </div>
       <div class="col s4 center">
           <h3 id="videoTtl" ><i class="small material-icons">video_library</i>Videos</h3>
-          (860 resultados)
+          ({{channel.pageInfo.totalResults}} resultados)
       </div>
       <div class="col s2 offset-s2 valign-wrapper" id="arrowBtn">
         <a class="btn-floating btn waves-effect waves-light  orange darken-3"><i class="material-icons">arrow_forward</i></a>
       </div>
     </div>
-    <div class="row color-light hoverable">
+    <div class="row color-light hoverable"  *ngFor="let item of channel.items; let i = index">
       <div class="col s12 color-dark">
-        <h5 id="videoTtl"><i class="material-icons yellow darken-4 text">videocam</i><span>Nombre del Video</span> </h5>
+        <h5 id="videoTtl"><i class="material-icons yellow darken-4 text">videocam</i><span>{{channel.items[i].snippet.title}}</span> </h5>
       </div>
-      <div class="col s6 color-light">
-        <p class="sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean imperdiet tellus id tincidunt ultricies. Nunc bibendum, libero ut facilisis tincidunt, justo nisi consectetur purus, sit amet aliquam ipsum arcu in eros. </p>
+      <div class="col s4 color-light valign-wrapper">
+          <img class="responsive-img" [src]="channel.items[i].snippet.thumbnails.medium.url">
       </div>
-      <div class="col s6 color-light">
+      <div class="col s5 color-light valign-wrapper">
+        <p class="sm">{{channel.items[i].snippet.description}} </p>
+      </div>
+      <div class="col s3 color-light">
         <p class="detail-info">
-            Fecha: 03/05/2018
+            Fecha: {{(channel.items[i].snippet.publishedAt).substring(0, 10)}}
         </p>
         <p class="detail-info">
-            Hora: 21:25
-        </p>
-      </div>
-    </div>
-    <div class="row color-light hoverable">
-      <div class="col s12 color-dark">
-          <h5 id="videoTtl"><i class="material-icons yellow darken-4 text">videocam</i><span>Nombre del Video</span> </h5>
-      </div>
-      <div class="col s6 color-light">
-        <p class="sm">Nunc rutrum bibendum odio, vel lobortis urna pulvinar sit amet. Suspendisse potenti. Maecenas id fringilla leo. Ut eget risus sit amet eros varius efficitur accumsan at diam.</p>
-      </div>
-      <div class="col s6 color-light">
-        <p class="detail-info">
-            Fecha: 03/05/2018
-        </p>
-        <p class="detail-info">
-            Hora: 21:25
+            Hora: {{(channel.items[i].snippet.publishedAt).substring(11,16)}}
         </p>
       </div>
     </div>

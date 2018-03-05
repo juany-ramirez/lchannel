@@ -10,13 +10,7 @@ import { ConfigServicService } from '../config-servic.service';
 })
 export class HomeComponent implements OnInit {
 
-  item={
-    name:'',
-    description:'',
-    date:'',
-  };
-
-  items=[]
+ 
 
   channel={
     kind: '',
@@ -27,25 +21,37 @@ export class HomeComponent implements OnInit {
       totalResults: 0,
       resultsPerPage: 0
     },
-    items: [{}],
+    items: [
+      {
+        snippet:{
+          publishedAt:'',
+          channelId:'',
+          title:'',
+          description:'',
+          thumbnails:'',
+          channelTitle:'',
+          liveBroadcastContent:'',
+        }
+      }
+    ],
   }
-  
-  posts : any;
 
+  fecha = ''
 
   constructor(private _data: ConfigServicService) { }
 
   ngOnInit() {
-    // this._data.getPosts()
-    // .subscribe(data=>this.channel={
-    //   kind: data['kind'],
-    //   etag: data['etag'],
-    //   nextPageToken: data['nextPageToken'],
-    //   prevPageToken: data['prevPageToken'],
-    //   pageInfo: data['pageInfo'],
-    //   items: data['items']
-    // });
-    this.posts = this._data.getPosts()
+    this._data.getPosts()
+    .subscribe(data=>this.channel={
+      kind: data['kind'],
+      etag: data['etag'],
+      nextPageToken: data['nextPageToken'],
+      prevPageToken: data['prevPageToken'],
+      pageInfo: data['pageInfo'],
+      items: data['items']
+    });
+    // this._data.getPosts().subscribe(data=>this.posts=data);
+    //this._data.getPosts().subscribe(data=>this.posts=data);
   }
 
 }
