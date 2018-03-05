@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Channel } from './Channel';
 import { Observable } from 'rxjs/Observable';
 import { ConfigServicService } from '../config-servic.service';
 
@@ -12,6 +11,9 @@ export class HomeComponent implements OnInit {
 
   chans=false
   
+  primerTkn=''
+  pageN = 1
+
   channel={
     kind: '',
     etag: '',
@@ -27,6 +29,7 @@ export class HomeComponent implements OnInit {
     ],
   }
 
+
   constructor(private _data: ConfigServicService) { }
 
   ngOnInit() {
@@ -39,6 +42,7 @@ export class HomeComponent implements OnInit {
       pageInfo: data['pageInfo'],
       items: data['items']
     });
+    this.primerTkn = this.channel.nextPageToken
     this.chans=true
   }
 
@@ -52,10 +56,11 @@ export class HomeComponent implements OnInit {
       pageInfo: data['pageInfo'],
       items: data['items']
     });
+    this.pageN++
   }
 
   prevPage(){
-    if(this.channel.prevPageToken!='primera'){
+    if(this.channel.prevPageToken!='primera' && this.channel.nextPageToken!=this.primerTkn){
       this._data.nxtPage(this.channel.prevPageToken)
         .subscribe(data=>this.channel={
           kind: data['kind'],
@@ -65,6 +70,7 @@ export class HomeComponent implements OnInit {
           pageInfo: data['pageInfo'],
           items: data['items']
         });
+        this.pageN--
     }
   }
 

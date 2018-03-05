@@ -19,13 +19,16 @@
           <a class="waves-effect waves-light btn-large yellow darken-4"><i class="material-icons left">search</i>Buscar</a>
       </div>
     </div>
+    ({{channel.pageInfo.totalResults}} resultados)
+    <br>
+    <br>
     <div class="row dark-nav">
       <div class="col s2 offset-s2 valign-wrapper" id="arrowBtn">
         <a class="btn-floating btn waves-effect waves-light  orange darken-3" (click)="prevPage()"><i class="material-icons">arrow_back</i></a>
       </div>
       <div class="col s4 center">
           <h3 id="videoTtl" ><i class="small material-icons">video_library</i>Videos</h3>
-          ({{channel.pageInfo.totalResults}} resultados)
+          Pagina {{pageN}}
       </div>
       <div class="col s2 offset-s2 valign-wrapper" id="arrowBtn">
         <a class="btn-floating btn waves-effect waves-light  orange darken-3" (click)="nextPage()"><i class="material-icons">arrow_forward</i></a>

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Channel } from './home/Channel';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HttpClient } from '@angular/common/http';
@@ -16,12 +15,12 @@ import { HttpClient } from '@angular/common/http';
   
   
   getPosts() {
-    this.channel= this.http.get<Channel>(this.ROOT_URL)
+    this.channel= this.http.get(this.ROOT_URL)
     return this.channel
   }
 
   nxtPage(token) {
-    this.channel = this.http.get<Channel>(this.ROOT_URL+token)
+    this.channel = this.http.get(this.ROOT_URL+token)
     return this.channel
   }
 }
