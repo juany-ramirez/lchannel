@@ -31,24 +31,27 @@
         <a class="btn-floating btn waves-effect waves-light  orange darken-3" (click)="nextPage()"><i class="material-icons">arrow_forward</i></a>
       </div>
     </div>
-    <div class="row color-light hoverable"  *ngFor="let item of channel.items; let i = index">
-      <div class="col s12 color-dark">
-        <h5 id="videoTtl"><i class="material-icons yellow darken-4 text">videocam</i><span>{{channel.items[i].snippet.title}}</span> </h5>
-      </div>
-      <div class="col s4 color-light valign-wrapper">
-          <img class="responsive-img" [src]="channel.items[i].snippet.thumbnails.medium.url">
-      </div>
-      <div class="col s5 color-light valign-wrapper">
-        <p class="sm">{{channel.items[i].snippet.description}} </p>
-      </div>
-      <div class="col s3 color-light">
-        <p class="detail-info">
-            Fecha: {{(channel.items[i].snippet.publishedAt).substring(0, 10)}}
-        </p>
-        <p class="detail-info">
-            Hora: {{(channel.items[i].snippet.publishedAt).substring(11,16)}}
-        </p>
-      </div>
+    <div *ngIf="chans" >
+        <div class="row color-light hoverable" *ngFor="let item of channel.items; let i = index">
+          <div class="col s12 color-dark">
+            <h5 id="videoTtl"><i class="material-icons yellow darken-4 text">videocam</i><span>{{channel.items[i].snippet.title}}</span> </h5>
+          </div>
+          <div class="col s4 color-light valign-wrapper">
+              <img class="responsive-img" [src]="channel.items[i].snippet.thumbnails.medium.url">
+          </div>
+          <div class="col s5 color-light valign-wrapper">
+            <p class="sm">{{channel.items[i].snippet.description}} </p>
+          </div>
+          <div class="col s3 color-light">
+            <p class="detail-info">
+                Fecha: {{(channel.items[i].snippet.publishedAt).substring(0, 10)}}
+            </p>
+            <p class="detail-info">
+                Hora: {{(channel.items[i].snippet.publishedAt).substring(11,16)}}
+            </p>
+          </div>
+        </div>
+        
     </div>
     <br>
   </div>

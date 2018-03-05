@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 
   channel : any;
     
-  readonly ROOT_URL='http://localhost:8080/'
+  readonly ROOT_URL='https://lbackend-197117.appspot.com/'
 
 
   constructor(private http: HttpClient) { }

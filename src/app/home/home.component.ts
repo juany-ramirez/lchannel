@@ -10,8 +10,8 @@ import { ConfigServicService } from '../config-servic.service';
 })
 export class HomeComponent implements OnInit {
 
- 
-
+  chans=false
+  
   channel={
     kind: '',
     etag: '',
@@ -23,20 +23,9 @@ export class HomeComponent implements OnInit {
     },
     items: [
       {
-        snippet:{
-          publishedAt:'',
-          channelId:'',
-          title:'',
-          description:'',
-          thumbnails:'',
-          channelTitle:'',
-          liveBroadcastContent:'',
-        }
       }
     ],
   }
-
-  fecha = ''
 
   constructor(private _data: ConfigServicService) { }
 
@@ -50,6 +39,7 @@ export class HomeComponent implements OnInit {
       pageInfo: data['pageInfo'],
       items: data['items']
     });
+    this.chans=true
   }
 
   nextPage(){
