@@ -46,12 +46,37 @@ export class HomeComponent implements OnInit {
       kind: data['kind'],
       etag: data['etag'],
       nextPageToken: data['nextPageToken'],
+      prevPageToken: 'primera',
+      pageInfo: data['pageInfo'],
+      items: data['items']
+    });
+  }
+
+  nextPage(){
+    this._data.nxtPage(this.channel.nextPageToken)
+    .subscribe(data=>this.channel={
+      kind: data['kind'],
+      etag: data['etag'],
+      nextPageToken: data['nextPageToken'],
       prevPageToken: data['prevPageToken'],
       pageInfo: data['pageInfo'],
       items: data['items']
     });
-    // this._data.getPosts().subscribe(data=>this.posts=data);
-    //this._data.getPosts().subscribe(data=>this.posts=data);
   }
+
+  prevPage(){
+    if(this.channel.prevPageToken!='primera'){
+      this._data.nxtPage(this.channel.prevPageToken)
+        .subscribe(data=>this.channel={
+          kind: data['kind'],
+          etag: data['etag'],
+          nextPageToken: data['nextPageToken'],
+          prevPageToken: data['prevPageToken'],
+          pageInfo: data['pageInfo'],
+          items: data['items']
+        });
+    }
+  }
+
 
 }

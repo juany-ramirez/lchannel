@@ -19,4 +19,9 @@ import { HttpClient } from '@angular/common/http';
     this.channel= this.http.get<Channel>(this.ROOT_URL)
     return this.channel
   }
+
+  nxtPage(token) {
+    this.channel = this.http.get<Channel>(this.ROOT_URL+token)
+    return this.channel
+  }
 }
